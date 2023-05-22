@@ -2,24 +2,10 @@
   "users": [
     {
       "emailInput": "admin@gmail.com",
-      "usernameInput": "admin",
-      "phoneInput": "5555555555",
+      "usernameInput": "jasswinder",
+      "phoneInput": "6555555555",
       "passwordInput": "admin",
       "id": 1
-    },
-    {
-      "emailInput": "asdns@gmail.com",
-      "usernameInput": "asdska",
-      "phoneInput": "4444444444",
-      "passwordInput": "sadasnfask",
-      "id": 2
-    },
-    {
-      "emailInput": "adasdkn@gmail.com",
-      "usernameInput": "adasdkn@gmail.com",
-      "phoneInput": "5555555555",
-      "passwordInput": "adasdkn@gmail.com",
-      "id": 3
     }
   ],
   "products": [
@@ -578,20 +564,20 @@
   ],
   "cart": [
     {
-      "id": "2",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "price": 899,
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "id": "3",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "price": 1249,
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
       "quantity": 1
     },
     {
-      "id": "4",
-      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
-      "price": 280,
-      "title": "OPPOF19",
-      "description": "OPPO F19 is officially announced on April 2021.",
-      "quantity": 1
+      "id": "8",
+      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+      "price": 1499,
+      "title": "Microsoft Surface Laptop 4",
+      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+      "quantity": 2
     }
   ]
 }
