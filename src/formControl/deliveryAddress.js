@@ -16,16 +16,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
-
-
-
-
-
-
-
-
-
 const DeliveryAddress = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(false);
@@ -33,10 +23,8 @@ const DeliveryAddress = () => {
   // for selecting between new and existing address
   const [selectedOption, setSelectedOption] = useState("new");
   const [selectedOption1, setSelectedOption1] = useState("");
-  
-  // for getting selected value 
-  
 
+  // for getting selected value
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -67,19 +55,18 @@ const DeliveryAddress = () => {
   const [countryError, setCountryError] = useState(false);
   const [postalCodeError, setPostalCodeError] = useState(false);
 
-
-  // for form validate 
-  const [fN, setFN] = useState(false)
-  const [lN, setLN] = useState(false)
-  const [aL1, setAL1] = useState(false)
-  const [sE, setSE] = useState(false)
-  const [cE, setCE] = useState(false)
-  const [cI, setCI] = useState(false)
-  const [pC, setPC] = useState(false)
+  // for form validate
+  const [fN, setFN] = useState(false);
+  const [lN, setLN] = useState(false);
+  const [aL1, setAL1] = useState(false);
+  const [sE, setSE] = useState(false);
+  const [cE, setCE] = useState(false);
+  const [cI, setCI] = useState(false);
+  const [pC, setPC] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(form)
+    console.log(form);
     if (form) {
       console.log({
         " firstName": firstName,
@@ -120,41 +107,42 @@ const DeliveryAddress = () => {
     }
   };
 
+  const ExistingSubmit = (e) => {
+    e.preventDefault();
+    if (selectedOption1 === "") {
+      notify("Select from options ");
+    } else {
+      console.log(selectedOption1);
+      navigate("../payment-page");
+    }
+  };
 
- const ExistingSubmit=(e)=>{
-  e.preventDefault()
-
- console.log(selectedOption1)
-  }
-
-
-  useEffect(()=>{
-    if(fN && lN && aL1 && pC && cE && sE && cI){
-
+  useEffect(() => {
+    if (fN && lN && aL1 && pC && cE && sE && cI) {
       setForm(true);
       console.log(form);
     }
-  },[handleClick])
+  }, [handleClick]);
 
   const handleChange = (e) => {
     switch (e.target.name) {
-
       case "firstName":
         if (firstName.length < 2 || firstName === "") {
           setFirstNameError(true);
           notify("First Name can't be Empty or Less Than 3 Characters");
-        } else {setFirstNameError(false)
-          setFN(true)
-          }
+        } else {
+          setFirstNameError(false);
+          setFN(true);
+        }
         break;
-
 
       case "lastName":
         if (lastName.length < 2 || lastName === "") {
           setLastNameError(true);
           notify("Last Name can't be Empty or Less Than 3 Characters");
-        } else {setLastNameError(false)
-          setLN(true)
+        } else {
+          setLastNameError(false);
+          setLN(true);
         }
         break;
 
@@ -164,7 +152,7 @@ const DeliveryAddress = () => {
           notify("Address Field can't be Empty ");
         } else {
           setAddressLine1Error(false);
-          setAL1(true)
+          setAL1(true);
         }
         break;
 
@@ -172,8 +160,9 @@ const DeliveryAddress = () => {
         if (postalCode === "" || postalCode.length < 6) {
           setPostalCodeError(true);
           notify("Postal-Code can't be empty or less than 6 digits");
-        } else {setPostalCodeError(false);
-          setPC(true)
+        } else {
+          setPostalCodeError(false);
+          setPC(true);
         }
         break;
 
@@ -183,7 +172,7 @@ const DeliveryAddress = () => {
           notify("City can't be empty ");
         } else {
           setCityError(false);
-          setCI(true)
+          setCI(true);
         }
         break;
 
@@ -193,7 +182,7 @@ const DeliveryAddress = () => {
           notify("State can't be empty ");
         } else {
           setStateError(false);
-          setSE(true)
+          setSE(true);
         }
         break;
 
@@ -203,13 +192,11 @@ const DeliveryAddress = () => {
           notify("Country can't be empty ");
         } else {
           setCountryError(false);
-          setCE(true)
+          setCE(true);
         }
         break;
 
       default:
-       
-      
     }
   };
 
@@ -241,35 +228,52 @@ const DeliveryAddress = () => {
 
         <Box
           display={"flex"}
-          marginTop={"4rem"}
+          marginTop={"2rem"}
           sx={{
+            height: "30%",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <form>
-            <RadioGroup
-              aria-label="address-option"
-              name="address-option"
-              value={selectedOption}
-              onChange={handleOptionChange}
-            >
-              <FormControlLabel
-                value="new"
-                control={<Radio />}
-                label="Enter New Address"
-              />
-              <FormControlLabel
-                value="existing"
-                control={<Radio />}
-                label="Choose Existing Address"
-              />
-            </RadioGroup>
-          </form>
+          <Box
+            sx={{
+              display: "flex",
+              width: "42%",
+              height: "70%",
+              marginRight:"1%",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#fff",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+              borderRadius: "6px",
+              transition: "box-shadow 0.3s",
+              "&:hover": {
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
+              },
+            }}
+          >
+            <form>
+              <RadioGroup
+                aria-label="address-option"
+                name="address-option"
+                value={selectedOption}
+                onChange={handleOptionChange}
+              >
+                <FormControlLabel
+                  value="new"
+                  control={<Radio />}
+                  label="Enter New Address"
+                />
+                <FormControlLabel
+                  value="existing"
+                  control={<Radio />}
+                  label="Choose Existing Address"
+                />
+              </RadioGroup>
+            </form>
+          </Box>
         </Box>
-        
 
-        
         <Grid
           container
           spacing={1}
@@ -279,213 +283,248 @@ const DeliveryAddress = () => {
           }}
         >
           {selectedOption === "new" && (
-             <Box display={"flex"} alignItems={"center"} justifyContent={"center"} width={"100%"}> 
-            <Grid item xs={7} textAlign={"center"}>
-              <ListItem
+            <Box
+              marginTop={"1rem"}
+              display={"flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={"100%"}
+              borderRadius={"6px"}
+              
+            >
+              <Grid
+                item
+                xs={5}
                 sx={{
-                  marginTop: 7,
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                  borderRadius: "6px",
+                  transition: "box-shadow 0.3s",
+                  "&:hover": {
+                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
+                  },
+                  height: "100%",
                 }}
               >
-                <form noValidate autoComplete="on">
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="First Name"
-                        error={firstNameError}
-                        variant="outlined"
-                        name="firstName"
-                        value={firstName}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        fullWidth
-                      />
+                <Typography
+                  sx={{ color: "blue", padding: "10px 0px 0px 17px" }}
+                  id="demo-radio-buttons-group-label"
+                >
+                  Add New Address
+                </Typography>
+                <ListItem
+                  sx={{
+                    marginTop: 4,
+                  }}
+                >
+                  <form noValidate autoComplete="on">
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="First Name"
+                          error={firstNameError}
+                          variant="outlined"
+                          name="firstName"
+                          value={firstName}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          fullWidth
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="Last Name"
+                          name="lastName"
+                          error={lastNameError}
+                          value={lastName}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setLastName(e.target.value)}
+                          variant="outlined"
+                          fullWidth
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          required
+                          label="Address line 1"
+                          error={addressLine1Error}
+                          variant="outlined"
+                          fullWidth
+                          name="addressLine1"
+                          value={addressLine1}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setAddressLine1(e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          label="Address line 2"
+                          error={addressLine2Error}
+                          variant="outlined"
+                          fullWidth
+                          name="addressLine2"
+                          value={addressLine2}
+                          // onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setAddressLine2(e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="Postal/Zip Code"
+                          error={postalCodeError}
+                          variant="outlined"
+                          fullWidth
+                          inputProps={{ maxLength: 6 }}
+                          name="postalCode"
+                          value={postalCode}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => handlePostalCode(e)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="City"
+                          error={cityError}
+                          variant="outlined"
+                          fullWidth
+                          name="city"
+                          value={city}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setCity(e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="Province/State"
+                          error={stateError}
+                          variant="outlined"
+                          fullWidth
+                          name="state"
+                          value={state}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setState(e.target.value)}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          required
+                          label="Country"
+                          error={countryError}
+                          variant="outlined"
+                          fullWidth
+                          name="country"
+                          value={country}
+                          onBlur={(e) => handleChange(e)}
+                          onChange={(e) => setCountry(e.target.value)}
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="Last Name"
-                        name="lastName"
-                        error={lastNameError}
-                        value={lastName}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setLastName(e.target.value)}
-                        variant="outlined"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        required
-                        label="Address line 1"
-                        error={addressLine1Error}
-                        variant="outlined"
-                        fullWidth
-                        name="addressLine1"
-                        value={addressLine1}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setAddressLine1(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        label="Address line 2"
-                        error={addressLine2Error}
-                        variant="outlined"
-                        fullWidth
-                        name="addressLine2"
-                        value={addressLine2}
-                        // onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setAddressLine2(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="Postal/Zip Code"
-                        error={postalCodeError}
-                        variant="outlined"
-                        fullWidth
-                        inputProps={{ maxLength: 6 }}
-                        name="postalCode"
-                        value={postalCode}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => handlePostalCode(e)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="City"
-                        error={cityError}
-                        variant="outlined"
-                        fullWidth
-                        name="city"
-                        value={city}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="Province/State"
-                        error={stateError}
-                        variant="outlined"
-                        fullWidth
-                        name="state"
-                        value={state}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setState(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        label="Country"
-                        error={countryError}
-                        variant="outlined"
-                        fullWidth
-                        name="country"
-                        value={country}
-                        onBlur={(e) => handleChange(e)}
-                        onChange={(e) => setCountry(e.target.value)}
-                      />
-                    </Grid>
-                  </Grid>
-                  <Button
-                    onClick={handleClick}
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      marginTop: 4,
-                    }}
-                    startIcon={<Save />}
-                  >
-                    Continue
-                  </Button>
-                </form>
-              </ListItem>
-            </Grid>
+                    <Button
+                      onClick={handleClick}
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        marginTop: 4,
+                      }}
+                      startIcon={<Save />}
+                    >
+                      Continue
+                    </Button>
+                  </form>
+                </ListItem>
+              </Grid>
             </Box>
           )}
 
           {selectedOption === "existing" && (
-            <Box display={"flex"} alignItems={"center"} justifyContent={"center"} width={"100%"}>
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={"100%"}
+            >
+              <Grid ListItem xl={5} width={"100%"}>
+                <ListItem
+                  sx={{
+                    marginTop: "1rem",
 
-            
-            <Grid ListItem xl={5}  >
-              <ListItem
-                sx={{
-                  marginTop: 9,
-                  border: " 2px solid #1797B1",
-                  borderRadius: "6px",
-                  height: "fit-content",
-                }}
-              >
-                <FormControl >
-                  <FormLabel
-                    sx={{ color: "blue", padding: "2px 0px 10px 0px" }}
-                    id="demo-radio-buttons-group-label"
-                  >
-                    Existing Address
-                  </FormLabel>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="none"
-                    name="radio-buttons-group"
-                    value={selectedOption1}
-                    onChange={handleOptionChange1}
-                  >
-                    <FormControlLabel
-                      value="address1"
-                      control={<Radio />}
-                      label ="Cecilia Chapman
+                   
+                    height: "fit-content",
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                    borderRadius: "6px",
+                    transition: "box-shadow 0.3s",
+                    "&:hover": {
+                      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
+                    },
+                  }}
+                >
+                  <FormControl>
+                    <FormLabel
+                      sx={{ color: "blue", padding: "2px 0px 10px 0px" }}
+                      id="demo-radio-buttons-group-label"
+                    >
+                      Existing Address
+                    </FormLabel>
+                    <RadioGroup
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="none"
+                      name="radio-buttons-group"
+                      value={selectedOption1}
+                      onChange={handleOptionChange1}
+                    >
+                      <FormControlLabel
+                        value="address1"
+                        control={<Radio />}
+                        label="Cecilia Chapman
                            711-2880 Nulla St.
                            Mankato Mississippi 96522
                            (257) 563-7401"
-                      sx={{
-                        paddingTop: "16px",
-                      }}
-                    />
-                    <FormControlLabel
-                      value="address2"
-                      control={<Radio />}
-                      label ="Iris Watson
+                        sx={{
+                          paddingTop: "16px",
+                        }}
+                      />
+                      <FormControlLabel
+                        value="address2"
+                        control={<Radio />}
+                        label="Iris Watson
                            P.O. Box 283 8562 Fusce Rd.
                            Frederick Nebraska 20620
                            (372) 587-2335"
-                      sx={{
-                        paddingTop: "16px",
-                      }}
-                    />
-                    <FormControlLabel
-                      value="address3"
-                      control={<Radio />}
-                      label="Celeste Slater
+                        sx={{
+                          paddingTop: "16px",
+                        }}
+                      />
+                      <FormControlLabel
+                        value="address3"
+                        control={<Radio />}
+                        label="Celeste Slater
                            606-3727 Ullamcorper. Street
                            Roseville NH 11523
                            (786) 713-8616"
+                        sx={{
+                          paddingTop: "16px",
+                        }}
+                      />
+                    </RadioGroup>
+                    <Button
+                      onClick={(e) => ExistingSubmit(e)}
+                      variant="contained"
+                      fullWidth
                       sx={{
-                        paddingTop: "16px",
+                        marginTop: 4,
+                        marginBottom: 2,
                       }}
-                    />
-                  </RadioGroup>
-                  <Button
-                    onClick={(e)=>ExistingSubmit(e)}
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      marginTop: 4,
-                      marginBottom:2
-                    }}
-                    startIcon={<Save />}
-                  >
-                    Continue
-                  </Button>
-                </FormControl>
-              </ListItem>
-            </Grid>
+                      startIcon={<Save />}
+                    >
+                      Continue
+                    </Button>
+                  </FormControl>
+                </ListItem>
+              </Grid>
             </Box>
           )}
         </Grid>
