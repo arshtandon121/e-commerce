@@ -6,10 +6,29 @@
       "phoneInput": "6555555555",
       "passwordInput": "admin",
       "id": 1
+    },
+    {
+      "emailInput": "test12@mail.com",
+      "usernameInput": "halka balluana",
+      "phoneInput": "7458999622",
+      "passwordInput": "admin",
+      "id": 2
+    },
+    {
+      "emailInput": "t1@gmail.com",
+      "usernameInput": "arsh",
+      "phoneInput": "4555555554",
+      "passwordInput": "admin",
+      "id": 3
+    },
+    {
+      "emailInput": "A1@gmail.com",
+      "usernameInput": "A123",
+      "phoneInput": "5416541989",
+      "passwordInput": "admin",
+      "id": 4
     }
   ],
-
-  
   "products": [
     {
       "id": 1,
@@ -571,15 +590,139 @@
       "price": 1249,
       "title": "Samsung Universe 9",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "quantity": 1
+      "quantity": 3,
+      "userID": "3"
     },
     {
-      "id": "8",
-      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
-      "price": 1499,
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "quantity": 2
+      "id": "4",
+      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+      "price": 280,
+      "title": "OPPOF19",
+      "description": "OPPO F19 is officially announced on April 2021.",
+      "quantity": 1,
+      "userID": "1"
+    },
+    {
+      "id": "6",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "price": 1749,
+      "title": "MacBook Pro",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "quantity": 1,
+      "userID": "4"
+    },
+    {
+      "id": "12",
+      "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+      "price": 40,
+      "title": "Brown Perfume",
+      "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+      "quantity": 1,
+      "userID": "4"
+    },
+    {
+      "id": "14",
+      "thumbnail": "https://i.dummyjson.com/data/products/14/thumbnail.jpg",
+      "price": 120,
+      "title": "Non-Alcoholic Perfume Oil",
+      "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+      "quantity": 1,
+      "userID": "4"
+    },
+    {
+      "id": "5",
+      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+      "price": 499,
+      "title": "Huawei P30",
+      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+      "quantity": 1,
+      "userID": "2"
+    }
+  ],
+  "address": [
+    {
+      "userID": "1",
+      "firstName": "sssssss",
+      "lastName": "sfnfns",
+      "addressLine1": "sfs",
+      "addressLine2": "",
+      "state": "dfdf",
+      "city": "sdnnsd",
+      "country": "dsds",
+      "postalCode": "444444",
+      "id": 1
+    },
+    {
+      "userID": "2",
+      "firstName": "sssssss",
+      "lastName": "sfnfns",
+      "addressLine1": "sfs",
+      "addressLine2": "",
+      "state": "dfdf",
+      "city": "sdnnsd",
+      "country": "dsds",
+      "postalCode": "444444",
+      "id": 1
+    },
+    {
+      "userID": "3",
+      "firstName": "sssssss",
+      "lastName": "sfnfns",
+      "addressLine1": "sfs",
+      "addressLine2": "",
+      "state": "dfdf",
+      "city": "sdnnsd",
+      "country": "dsds",
+      "postalCode": "444444",
+      "id": 1
+    },
+    {
+      "userID": "1",
+      "firstName": "dsd",
+      "lastName": "dsfknskf",
+      "addressLine1": "sd",
+      "addressLine2": "",
+      "state": "sadasdas",
+      "city": "sdsadasd",
+      "country": "dddddddddddd",
+      "postalCode": "444774",
+      "id": 2
+    },
+    {
+      "userID": "1",
+      "firstName": "dsda sdmasmd",
+      "lastName": "sdsasdasd",
+      "addressLine1": "askfnc kj",
+      "addressLine2": "",
+      "state": "sadasdasdasd",
+      "city": "sadkadsad",
+      "country": "sdasdsadsd",
+      "postalCode": "444444",
+      "id": 3
+    },
+    {
+      "userID": "1",
+      "firstName": "sdfdfsdfdsfsknkfksfasdmsadn",
+      "lastName": "njjjjjj",
+      "addressLine1": "sadasdasd",
+      "addressLine2": "",
+      "state": "asdn asdnka sdk",
+      "city": "asdasdnk asd",
+      "country": "asdasnkdaksda",
+      "postalCode": "777775",
+      "id": 4
+    },
+    {
+      "userID": "1",
+      "firstName": "arsh",
+      "lastName": "deep",
+      "addressLine1": "arshtand near shcool",
+      "addressLine2": "",
+      "state": "punjab",
+      "city": "abohar",
+      "country": "india",
+      "postalCode": "152122",
+      "id": 5
     }
   ]
 }

@@ -15,6 +15,7 @@ const Product = () => {
   const [data, setData] = useState();
 
 
+
    
 
   // carousel
@@ -45,8 +46,21 @@ const Product = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [quantity, setQuantity] = useState(1);
+  const [userID, setUserID] = useState();
+
+
+
+  // for user id 
+  useEffect(() => {
+    setUserID(localStorage.getItem('UserID'))
+    
+ }, [])
+
 
   // for getting price desc and thunail
+
+
+
 
   useEffect(() => {
     fetch(`http://localhost:8000/products`)
@@ -69,7 +83,7 @@ const Product = () => {
   
   
 
-  var regobj = { id, thumbnail, price, title, description, quantity };
+  var regobj = { id, thumbnail, price, title, description, quantity , userID};
 
   const itemAdded = () => {
     toast.success("Item Added to Cart", {

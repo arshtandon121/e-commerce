@@ -13,7 +13,7 @@ import img1 from "../nord-buds-ce-oneplus-original-imagfyk4hyvgg6ze.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import Navbar from "../Components/navbar";
-import { useNavigate } from "react-router-dom";
+import { useActionData, useNavigate } from "react-router-dom";
 import OrderSummaryCards from "./orderSummaryCards";
 import { current } from "@reduxjs/toolkit";
 
@@ -39,8 +39,9 @@ const OrderSummary = () => {
         return res.json();
       })
       .then((resp) => {
-        
+       
         setCartProducts(resp);
+       
       });
   };
 
@@ -58,7 +59,7 @@ const OrderSummary = () => {
     
   }, [cartProducts, cartProducts.quantity]);
 
-  // console.log(cartProducts);
+
 
 
 
@@ -66,8 +67,8 @@ const OrderSummary = () => {
   const cartValue = () => {
     var cartPr = 0;
 
-    for (var i = 0; i < cartProducts.length; i++) {
-      cartPr += cartProducts[i].price * cartProducts[i].quantity;
+    for (var i = 0; i < userProducts.length; i++) {
+      cartPr += userProducts[i].price * userProducts[i].quantity;
       
      
     }
@@ -91,6 +92,18 @@ const OrderSummary = () => {
       setCartPrice(cartPrice)
       
   }
+
+
+  // for filterng Products 
+  var userProducts =[];
+
+  for(var i=0; i<cartProducts.length; i++){
+    if(cartProducts[i].userID==localStorage.getItem('UserID')){
+      userProducts.push(cartProducts[i])
+    }
+   
+  }
+ 
 
   return (
     <>
@@ -119,9 +132,14 @@ const OrderSummary = () => {
           }}
         >
           <Grid item xs={8}>
-            {/* --------------------------------------------------------- */}
-            {cartProducts.map((cartitem) => (
+
+          
+
+
+            {userProducts.map((cartitem) => (
+              
               <Fragment key={cartitem.id}>
+               
                 <OrderSummaryCards cartitem={cartitem} fetchCartProducts={fetchCartProducts} reload={updatedValue}  cartPrice={cartPrice} setCartPrice={setCartPrice}/>
               </Fragment>
             ))}

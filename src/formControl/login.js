@@ -137,6 +137,9 @@ export default function Login() {
       return res.json();
     }).then((resp)=>{
       
+
+     
+      
      
       
       if (resp) {
@@ -144,6 +147,8 @@ export default function Login() {
         for (let i = 0; i < resp.length; i++) {
           if (resp[i].emailInput === emailInput && resp[i].passwordInput === passwordInput) {
             // Grant access
+            localStorage.setItem('UserID', JSON.stringify(resp[i].id));
+            console.log( localStorage.getItem('UserID'))
             // sessionStorage.setItem('email',emailInput);
              dispatch(login({
               email:emailInput,

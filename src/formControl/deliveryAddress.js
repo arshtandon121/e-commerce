@@ -7,7 +7,7 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
-  ListItem,
+  listitem,
   Radio,
   RadioGroup,
   TextField,
@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Navbar from "../Components/navbar";
+
 
 const DeliveryAddress = () => {
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ const DeliveryAddress = () => {
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+   
   };
 
   const handleOptionChange1 = (event) => {
@@ -43,6 +46,7 @@ const DeliveryAddress = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [userID, setUserID] = useState(localStorage.getItem("UserID"));
 
   // handle errors
 
@@ -64,26 +68,78 @@ const DeliveryAddress = () => {
   const [cI, setCI] = useState(false);
   const [pC, setPC] = useState(false);
 
+  // for adding address in database
+
+  let regobj = {
+    userID,
+    firstName,
+    lastName,
+    addressLine1,
+    addressLine2,
+    state,
+    city,
+    country,
+    postalCode,
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(form);
-    if (form) {
-      console.log({
-        " firstName": firstName,
-        lastName: lastName,
-        "addressline1 ": addressLine1,
-        addressline2: addressLine2,
-        state: state,
-        " city": city,
-        postalCode: postalCode,
-        country: country,
-      });
 
-      navigate("../payment-page");
+    if (form) {
+      fetch("http://localhost:8000/address", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(regobj),
+      })
+        .then((res) => {
+          // navigate("../payment-page");
+        })
+        .catch((err) => {
+          console.log("error" + err);
+        });
     } else {
       notify("Fill complete information");
     }
   };
+
+  // for getting the existing address stored in db
+
+  const [allAddresses, setAllAddresses] = useState();
+  let existingAddresses = [];
+  
+   
+  var flag = 0;
+
+  const matchedAddresses=(resp)=>{
+   if(flag==0){
+
+     for (let i = 0; i < resp.length; i++) {
+       if (resp[i].userID == userID) {
+       existingAddresses.push(resp[i])
+        }
+      }
+      flag++;
+    }
+    return existingAddresses
+  }
+  
+ const [EA, setEA] = useState()
+  
+  useEffect(() => {
+    fetch(`http://localhost:8000/address`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setAllAddresses(resp);
+        setEA(matchedAddresses(resp))
+      });
+    }, []);
+      
+   
+    
+    
+  
 
   // for errors toasts
 
@@ -120,7 +176,6 @@ const DeliveryAddress = () => {
   useEffect(() => {
     if (fN && lN && aL1 && pC && cE && sE && cI) {
       setForm(true);
-      console.log(form);
     }
   }, [handleClick]);
 
@@ -202,6 +257,7 @@ const DeliveryAddress = () => {
 
   return (
     <>
+    <Navbar/>
       <Box
         sx={{
           width: "100%",
@@ -240,7 +296,7 @@ const DeliveryAddress = () => {
               display: "flex",
               width: "42%",
               height: "70%",
-              marginRight:"1%",
+              marginRight: "1%",
               alignItems: "center",
               justifyContent: "center",
               backgroundColor: "#fff",
@@ -290,7 +346,6 @@ const DeliveryAddress = () => {
               justifyContent={"center"}
               width={"100%"}
               borderRadius={"6px"}
-              
             >
               <Grid
                 item
@@ -303,6 +358,8 @@ const DeliveryAddress = () => {
                     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
                   },
                   height: "100%",
+                  paddingRight:"1rem",
+                  paddingLeft:"1rem"
                 }}
               >
                 <Typography
@@ -311,7 +368,7 @@ const DeliveryAddress = () => {
                 >
                   Add New Address
                 </Typography>
-                <ListItem
+                <listitem
                   sx={{
                     marginTop: 4,
                   }}
@@ -435,7 +492,7 @@ const DeliveryAddress = () => {
                       Continue
                     </Button>
                   </form>
-                </ListItem>
+                </listitem>
               </Grid>
             </Box>
           )}
@@ -447,12 +504,11 @@ const DeliveryAddress = () => {
               justifyContent={"center"}
               width={"100%"}
             >
-              <Grid ListItem xl={5} width={"100%"}>
-                <ListItem
+              <Grid listitem xl={5} width={"100%"}>
+                <listitem
                   sx={{
                     marginTop: "1rem",
 
-                   
                     height: "fit-content",
                     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
                     borderRadius: "6px",
@@ -476,39 +532,22 @@ const DeliveryAddress = () => {
                       value={selectedOption1}
                       onChange={handleOptionChange1}
                     >
-                      <FormControlLabel
-                        value="address1"
+                     
+
+                    
+
+                      {EA.map((item, index) => (
+                         <FormControlLabel
+                        value={"address"+index}
                         control={<Radio />}
-                        label="Cecilia Chapman
-                           711-2880 Nulla St.
-                           Mankato Mississippi 96522
-                           (257) 563-7401"
+                        label={item.firstName + " "+ item.lastName+ " "+ item.city+" "+item.state+" "+item.country+" "+item.postalCode}
                         sx={{
                           paddingTop: "16px",
                         }}
                       />
-                      <FormControlLabel
-                        value="address2"
-                        control={<Radio />}
-                        label="Iris Watson
-                           P.O. Box 283 8562 Fusce Rd.
-                           Frederick Nebraska 20620
-                           (372) 587-2335"
-                        sx={{
-                          paddingTop: "16px",
-                        }}
-                      />
-                      <FormControlLabel
-                        value="address3"
-                        control={<Radio />}
-                        label="Celeste Slater
-                           606-3727 Ullamcorper. Street
-                           Roseville NH 11523
-                           (786) 713-8616"
-                        sx={{
-                          paddingTop: "16px",
-                        }}
-                      />
+                      ))}
+
+                    
                     </RadioGroup>
                     <Button
                       onClick={(e) => ExistingSubmit(e)}
@@ -523,7 +562,7 @@ const DeliveryAddress = () => {
                       Continue
                     </Button>
                   </FormControl>
-                </ListItem>
+                </listitem>
               </Grid>
             </Box>
           )}
