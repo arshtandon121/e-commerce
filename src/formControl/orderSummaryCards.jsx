@@ -120,7 +120,10 @@ const OrderSummaryCards = ({ cartitem , reload ,  cartPrice , setCartPrice , fet
     }
   };
 
+ 
   return (
+<>
+
     <Box
       display={"flex"}
       marginTop={"0px"}
@@ -173,6 +176,8 @@ const OrderSummaryCards = ({ cartitem , reload ,  cartPrice , setCartPrice , fet
         <Button sx={{color:"red"}} onClick={handleDelete} endIcon={<CancelIcon/>} ></Button>
        </Box>
           </Box>
+     
+        </>
   );
 };
 
