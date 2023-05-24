@@ -10,6 +10,7 @@ import {
   Select,
   InputLabel,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // for all options
 const PaymentPage = () => {
@@ -21,8 +22,12 @@ const PaymentPage = () => {
     
   };
 
+  const navigate = useNavigate()
+
   const handleAdditionalOptionChange = (event) => {
     setAdditionalOption(event.target.value);
+    navigate("/order-details") 
+    
   };
 
   // for credit/debit/atm card
