@@ -17,24 +17,34 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../Components/navbar";
 
-
 const DeliveryAddress = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(false);
 
   // for selecting between new and existing address
   const [selectedOption, setSelectedOption] = useState("new");
-  const [selectedOption1, setSelectedOption1] = useState("");
+  const [selectedOption1, setSelectedOption1] = useState(0);
 
   // for getting selected value
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
-   
+
+    // setting values for states in function
+    setdfn(EA[selectedOption1].firstName);
+    setdln(EA[selectedOption1].lastName);
+    setdci(EA[selectedOption1].city);
+    setds(EA[selectedOption1].state);
+    setco(EA[selectedOption1].country);
+    setpr(EA[selectedOption1].postalCode);
+    setcrpr(localStorage.getItem("cartPrice"));
+    setuID(userID);
   };
 
   const handleOptionChange1 = (event) => {
     setSelectedOption1(event.target.value);
+   
+   
   };
 
   // take inputs
@@ -92,7 +102,17 @@ const DeliveryAddress = () => {
         body: JSON.stringify(regobj),
       })
         .then((res) => {
-          // navigate("../payment-page");
+      
+          setFirstName(" ");
+          setLastName(" ");
+          setAddressLine1(" ");
+          setAddressLine2(" ");
+          setCity(" ");
+          setState(" ");
+          setCountry(" ");
+          setPostalCode(" ");
+
+          setSelectedOption("existing");
         })
         .catch((err) => {
           console.log("error" + err);
@@ -105,26 +125,26 @@ const DeliveryAddress = () => {
   // for getting the existing address stored in db
 
   const [allAddresses, setAllAddresses] = useState();
+  const [cart, setCart] = useState();
   let existingAddresses = [];
-  
-   
+
   var flag = 0;
 
-  const matchedAddresses=(resp)=>{
-   if(flag==0){
-
-     for (let i = 0; i < resp.length; i++) {
-       if (resp[i].userID == userID) {
-       existingAddresses.push(resp[i])
+  const matchedAddresses = (resp) => {
+    if (flag == 0) {
+      for (let i = 0; i < resp.length; i++) {
+        if (resp[i].userID == userID) {
+          existingAddresses.push(resp[i]);
         }
       }
+
       flag++;
     }
-    return existingAddresses
-  }
-  
- const [EA, setEA] = useState()
-  
+    return existingAddresses;
+  };
+
+  const [EA, setEA] = useState();
+
   useEffect(() => {
     fetch(`http://localhost:8000/address`)
       .then((res) => {
@@ -132,14 +152,19 @@ const DeliveryAddress = () => {
       })
       .then((resp) => {
         setAllAddresses(resp);
-        setEA(matchedAddresses(resp))
+        setEA(matchedAddresses(resp));
       });
-    }, []);
-      
-   
-    
-    
-  
+  }, [selectedOption]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/cart`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setCart(resp);
+      });
+  }, []);
 
   // for errors toasts
 
@@ -163,13 +188,65 @@ const DeliveryAddress = () => {
     }
   };
 
+  const [dfn, setdfn] = useState();
+  const [dln, setdln] = useState();
+  const [dci, setdci] = useState();
+  const [ds, setds] = useState();
+  const [co, setco] = useState();
+  const [pr, setpr] = useState();
+  const [crpr, setcrpr] = useState();
+  const [uID, setuID] = useState();
+
+  console.log(localStorage.getItem("cartPrice"));
+
+  let Pid = 0;
   const ExistingSubmit = (e) => {
     e.preventDefault();
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].userID == userID) {
+        Pid = i;
+      }
+    }
+
+    const Products = [];
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].userID == userID) {
+        Products.push(cart[i]);
+      }
+    }
+    console.log(Products);
+
+    setdfn(EA[selectedOption1].firstName);
+    setdln(EA[selectedOption1].lastName);
+    setdci(EA[selectedOption1].city);
+    setds(EA[selectedOption1].state);
+    setco(EA[selectedOption1].country);
+    setpr(EA[selectedOption1].postalCode);
+    setcrpr(localStorage.getItem("cartPrice"));
+    setuID(userID);
+
+    const order = {dfn, dln, dci, ds, co, pr, crpr, uID, Products};
+    
+
+    console.log(cart);
     if (selectedOption1 === "") {
       notify("Select from options ");
     } else {
-      console.log(selectedOption1);
-      navigate("../payment-page");
+      console.log(order);
+      
+      fetch("http://localhost:8000/orders", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(order),
+      })
+        .then((res) => {
+          navigate("../payment-form");
+         
+        })
+        .catch((err) => {
+          console.log("error" + err);
+        });
+      
     }
   };
 
@@ -257,7 +334,7 @@ const DeliveryAddress = () => {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Box
         sx={{
           width: "100%",
@@ -358,8 +435,8 @@ const DeliveryAddress = () => {
                     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
                   },
                   height: "100%",
-                  paddingRight:"1rem",
-                  paddingLeft:"1rem"
+                  paddingRight: "1rem",
+                  paddingLeft: "1rem",
                 }}
               >
                 <Typography
@@ -489,7 +566,7 @@ const DeliveryAddress = () => {
                       }}
                       startIcon={<Save />}
                     >
-                      Continue
+                      Save Address
                     </Button>
                   </form>
                 </listitem>
@@ -504,23 +581,26 @@ const DeliveryAddress = () => {
               justifyContent={"center"}
               width={"100%"}
             >
-              <Grid listitem xl={5} width={"100%"}>
-                <listitem
-                  sx={{
-                    marginTop: "1rem",
-
-                    height: "fit-content",
-                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
-                    borderRadius: "6px",
-                    transition: "box-shadow 0.3s",
-                    "&:hover": {
-                      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
-                    },
-                  }}
-                >
+              <Grid
+                listitem
+                xl={5}
+                width={"100%"}
+                sx={{
+                  marginTop: "1rem",
+                  height: "fit-content",
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                  borderRadius: "6px",
+                  paddingLeft: "2rem",
+                  transition: "box-shadow 0.3s",
+                  "&:hover": {
+                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
+                  },
+                }}
+              >
+                <listItem>
                   <FormControl>
                     <FormLabel
-                      sx={{ color: "blue", padding: "2px 0px 10px 0px" }}
+                      sx={{ color: "blue", padding: "10px 0px 0px 0px" }}
                       id="demo-radio-buttons-group-label"
                     >
                       Existing Address
@@ -532,22 +612,28 @@ const DeliveryAddress = () => {
                       value={selectedOption1}
                       onChange={handleOptionChange1}
                     >
-                     
-
-                    
-
                       {EA.map((item, index) => (
-                         <FormControlLabel
-                        value={"address"+index}
-                        control={<Radio />}
-                        label={item.firstName + " "+ item.lastName+ " "+ item.city+" "+item.state+" "+item.country+" "+item.postalCode}
-                        sx={{
-                          paddingTop: "16px",
-                        }}
-                      />
+                        <FormControlLabel
+                          value={index}
+                          control={<Radio />}
+                          label={
+                            item.firstName +
+                            " " +
+                            item.lastName +
+                            " " +
+                            item.city +
+                            " " +
+                            item.state +
+                            " " +
+                            item.country +
+                            " " +
+                            item.postalCode
+                          }
+                          sx={{
+                            paddingTop: "16px",
+                          }}
+                        />
                       ))}
-
-                    
                     </RadioGroup>
                     <Button
                       onClick={(e) => ExistingSubmit(e)}
@@ -562,7 +648,7 @@ const DeliveryAddress = () => {
                       Continue
                     </Button>
                   </FormControl>
-                </listitem>
+                </listItem>
               </Grid>
             </Box>
           )}

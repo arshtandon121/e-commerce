@@ -111,6 +111,7 @@ const Product = () => {
     });
   };
 
+  const [cartCheck, setCartCheck] = useState()
   const addToCart = () => {
     // for checking in cart is item already there ?
 
@@ -119,15 +120,16 @@ const Product = () => {
         return res.json();
       })
       .then((resp) => {
+        setCartCheck(resp)
         var flag = 0;
         for (let i = 0; i < resp.length; i++) {
-          if (id === resp[i].id) {
+          if (id === resp[i].id && resp[i].userID===userID) {
             flag = 1;
             alreadyInCart();
             break;
           }
         }
-
+         console.log(cartCheck)
         if (flag == 0) {
           fetch("http://localhost:8000/cart", {
             method: "POST",

@@ -72,6 +72,7 @@ const OrderSummary = () => {
       
      
     }
+    localStorage.setItem('cartPrice', cartPr);
     // console.log(cartPr);
     setCartPrice(cartPr);
     // console.log(cartPrice);

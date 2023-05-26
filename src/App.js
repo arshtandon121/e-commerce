@@ -16,6 +16,8 @@ import PaymentPage from "./formControl/paymentPage";
 import DeliveryAddress from "./formControl/deliveryAddress";
 import OrderSummary from "./formControl/orderSummary";
 import Navbar from "./Components/navbar";
+import OrderDetails from "./formControl/orderDetails";
+import PaymentForm from "./formControl/paymentForm";
 
 
 
@@ -69,6 +71,8 @@ function App() {
           <Route  path="/payment-page" element={<PaymentPage />} />
           <Route  path="/address" element={<DeliveryAddress />} />
           <Route  path="/order-summary" element={<OrderSummary/>} />
+          <Route  path="/order-details" element={<OrderDetails/>} />
+          <Route  path="/payment-form" element={<PaymentForm/>} />
           
         </Routes>  
      
