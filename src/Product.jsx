@@ -2,10 +2,11 @@ import { React, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 import Navbar from "./Components/navbar";
-import { ToastContainer, toast } from "react-toastify";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { toast } from "react-toastify";
 
 const Product = () => {
   const { id } = useParams();

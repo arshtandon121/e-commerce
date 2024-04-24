@@ -24,6 +24,7 @@ const DeliveryAddress = () => {
   // for selecting between new and existing address
   const [selectedOption, setSelectedOption] = useState("new");
   const [selectedOption1, setSelectedOption1] = useState(0);
+  const [isAddressExist, setisAddressExist] = useState(false)
 
   // for getting selected value
 
@@ -31,6 +32,7 @@ const DeliveryAddress = () => {
     setSelectedOption(event.target.value);
 
     // setting values for states in function
+    
     setdfn(EA[selectedOption1].firstName);
     setdln(EA[selectedOption1].lastName);
     setdci(EA[selectedOption1].city);
@@ -140,6 +142,12 @@ const DeliveryAddress = () => {
 
       flag++;
     }
+    if(existingAddresses.length==0){
+      setisAddressExist(false)
+    }
+    else{
+      setisAddressExist(true)
+    }
     return existingAddresses;
   };
 
@@ -152,6 +160,7 @@ const DeliveryAddress = () => {
       })
       .then((resp) => {
         setAllAddresses(resp);
+       
         setEA(matchedAddresses(resp));
       });
   }, [selectedOption]);
@@ -228,24 +237,17 @@ const DeliveryAddress = () => {
     const order = {dfn, dln, dci, ds, co, pr, crpr, uID, Products};
     
 
-    console.log(cart);
+   
     if (selectedOption1 === "") {
       notify("Select from options ");
     } else {
-      console.log(order);
+      // use Local storage to save details of orders
+
+      localStorage.setItem('orders', JSON.stringify(order));
       
-      fetch("http://localhost:8000/orders", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(order),
-      })
-        .then((res) => {
-          navigate("../payment-form");
-         
-        })
-        .catch((err) => {
-          console.log("error" + err);
-        });
+
+      
+      navigate("../payment-form");
       
     }
   };
@@ -400,6 +402,7 @@ const DeliveryAddress = () => {
                 <FormControlLabel
                   value="existing"
                   control={<Radio />}
+                  disabled={!isAddressExist}
                   label="Choose Existing Address"
                 />
               </RadioGroup>

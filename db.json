@@ -2,31 +2,38 @@
   "users": [
     {
       "emailInput": "admin@gmail.com",
-      "usernameInput": "jasswinder",
-      "phoneInput": "6555555555",
-      "passwordInput": "admin",
+      "usernameInput": "arsh",
+      "phoneInput": "4596212566",
+      "passwordInput": "arsh11",
       "id": 1
     },
     {
-      "emailInput": "test12@mail.com",
-      "usernameInput": "halka balluana",
-      "phoneInput": "7458999622",
-      "passwordInput": "admin",
+      "emailInput": "raman121@gmail.com",
+      "usernameInput": "raman",
+      "phoneInput": "4561313333",
+      "passwordInput": "raman",
       "id": 2
     },
     {
-      "emailInput": "t1@gmail.com",
-      "usernameInput": "arsh",
-      "phoneInput": "4555555554",
-      "passwordInput": "admin",
+      "emailInput": "test1@gmail.com",
+      "usernameInput": "arsh121",
+      "phoneInput": "7888888888",
+      "passwordInput": "arsharsh11",
       "id": 3
     },
     {
-      "emailInput": "A1@gmail.com",
-      "usernameInput": "A123",
-      "phoneInput": "5416541989",
-      "passwordInput": "admin",
+      "emailInput": "A11@gmail.com",
+      "usernameInput": "Aaaaaaaa",
+      "phoneInput": "1234555555",
+      "passwordInput": "Arsh@rsh11",
       "id": 4
+    },
+    {
+      "emailInput": "arsh121@gmail.com",
+      "usernameInput": "arsh",
+      "phoneInput": "7777777777",
+      "passwordInput": "123456",
+      "id": 5
     }
   ],
   "products": [
@@ -583,330 +590,123 @@
       ]
     }
   ],
-  "cart": [
-    {
-      "id": "3",
-      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "price": 1249,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "quantity": 1,
-      "userID": "1"
-    },
-    {
-      "id": "10",
-      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-      "price": 1099,
-      "title": "HP Pavilion 15-DK1056WM",
-      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-      "quantity": 2,
-      "userID": "4"
-    },
-    {
-      "id": "11",
-      "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
-      "price": 13,
-      "title": "perfume Oil",
-      "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
-      "quantity": 1,
-      "userID": "4"
-    }
-  ],
+  "cart": [],
   "address": [
     {
-      "userID": "1",
-      "firstName": "sssssss",
-      "lastName": "sfnfns",
-      "addressLine1": "sfs",
-      "addressLine2": "",
-      "state": "dfdf",
-      "city": "sdnnsd",
-      "country": "dsds",
-      "postalCode": "444444",
-      "id": 1
-    },
-    {
-      "userID": "2",
-      "firstName": "sssssss",
-      "lastName": "sfnfns",
-      "addressLine1": "sfs",
-      "addressLine2": "",
-      "state": "dfdf",
-      "city": "sdnnsd",
-      "country": "dsds",
-      "postalCode": "444444",
-      "id": 1
-    },
-    {
-      "userID": "3",
-      "firstName": "sssssss",
-      "lastName": "sfnfns",
-      "addressLine1": "sfs",
-      "addressLine2": "",
-      "state": "dfdf",
-      "city": "sdnnsd",
-      "country": "dsds",
-      "postalCode": "444444",
-      "id": 1
-    },
-    {
-      "userID": "1",
-      "firstName": "dsd",
-      "lastName": "dsfknskf",
-      "addressLine1": "sd",
-      "addressLine2": "",
-      "state": "sadasdas",
-      "city": "sdsadasd",
-      "country": "dddddddddddd",
-      "postalCode": "444774",
-      "id": 2
-    },
-    {
-      "userID": "1",
-      "firstName": "dsda sdmasmd",
-      "lastName": "sdsasdasd",
-      "addressLine1": "askfnc kj",
-      "addressLine2": "",
-      "state": "sadasdasdasd",
-      "city": "sadkadsad",
-      "country": "sdasdsadsd",
-      "postalCode": "444444",
-      "id": 3
-    },
-    {
-      "userID": "1",
-      "firstName": "sdfdfsdfdsfsknkfksfasdmsadn",
-      "lastName": "njjjjjj",
+      "userID": "5",
+      "firstName": "sdsdfds",
+      "lastName": "asdasd",
       "addressLine1": "sadasdasd",
       "addressLine2": "",
-      "state": "asdn asdnka sdk",
-      "city": "asdasdnk asd",
-      "country": "asdasnkdaksda",
-      "postalCode": "777775",
-      "id": 4
-    },
-    {
-      "userID": "4",
-      "firstName": "arsh",
-      "lastName": "deep",
-      "addressLine1": "arshtand near shcool",
-      "addressLine2": "",
-      "state": "punjab",
-      "city": "abohar",
-      "country": "india",
-      "postalCode": "152122",
-      "id": 5
-    },
-    {
-      "userID": "4",
-      "firstName": "abeela",
-      "lastName": "never",
-      "addressLine1": "hello",
-      "addressLine2": "",
-      "state": "sadjjshdbh",
-      "city": "hsbdjsh",
-      "country": "sadjjas",
-      "postalCode": "789515",
-      "id": 6
-    },
-    {
-      "userID": "4",
-      "firstName": "ajggjd",
-      "lastName": "sdvbs",
-      "addressLine1": "sdavsjd",
-      "addressLine2": "",
-      "state": "sdhjshdjas",
-      "city": "1221",
-      "country": "sdjhjsd",
-      "postalCode": "555454",
-      "id": 7
-    },
-    {
-      "userID": "1",
-      "firstName": "arrr",
-      "lastName": "deep",
-      "addressLine1": "sdghih",
-      "addressLine2": "",
-      "state": "hjgyuyf",
-      "city": "abogfts",
-      "country": "gfyghfygh",
-      "postalCode": "789545",
-      "id": 8
+      "state": "asdasdasd",
+      "city": "asdsadasdsadkj",
+      "country": "sdfdsfdsf",
+      "postalCode": "454454",
+      "id": 1
     }
   ],
   "orders": [
     {
-      "dfn": "arsh",
-      "dln": "deep",
-      "dci": "abohar",
-      "ds": "punjab",
-      "co": "india",
-      "pr": "152122",
-      "crpr": "3310",
-      "uID": "4",
       "Products": [
         {
-          "id": "10",
-          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-          "price": 1099,
-          "title": "HP Pavilion 15-DK1056WM",
-          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-          "quantity": 3,
-          "userID": "4"
-        },
-        {
-          "id": "11",
-          "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
-          "price": 13,
-          "title": "perfume Oil",
-          "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+          "id": "2",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "price": 899,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
           "quantity": 1,
-          "userID": "4"
+          "userID": "5"
         }
       ],
       "id": 1
     },
     {
+      "dfn": "sdsdfds",
+      "dln": "asdasd",
+      "dci": "asdsadasdsadkj",
+      "ds": "asdasdasd",
+      "co": "sdfdsfdsf",
+      "pr": "454454",
+      "crpr": "280",
+      "uID": "5",
       "Products": [
         {
-          "id": "10",
-          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-          "price": 1099,
-          "title": "HP Pavilion 15-DK1056WM",
-          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-          "quantity": 2,
-          "userID": "4"
-        },
-        {
-          "id": "11",
-          "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
-          "price": 13,
-          "title": "perfume Oil",
-          "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+          "id": "4",
+          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+          "price": 280,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
           "quantity": 1,
-          "userID": "4"
+          "userID": "5"
         }
       ],
       "id": 2
     },
     {
-      "dfn": "arsh",
-      "dln": "deep",
-      "dci": "abohar",
-      "ds": "punjab",
-      "co": "india",
-      "pr": "152122",
-      "crpr": "2211",
-      "uID": "4",
+      "dfn": "sdsdfds",
+      "dln": "asdasd",
+      "dci": "asdsadasdsadkj",
+      "ds": "asdasdasd",
+      "co": "sdfdsfdsf",
+      "pr": "454454",
+      "crpr": "549",
+      "uID": "5",
       "Products": [
         {
-          "id": "10",
-          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-          "price": 1099,
-          "title": "HP Pavilion 15-DK1056WM",
-          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-          "quantity": 2,
-          "userID": "4"
-        },
-        {
-          "id": "11",
-          "thumbnail": "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
-          "price": 13,
-          "title": "perfume Oil",
-          "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+          "id": "1",
+          "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+          "price": 549,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
           "quantity": 1,
-          "userID": "4"
+          "userID": "5"
         }
       ],
       "id": 3
     },
     {
-      "dfn": "sssssss",
-      "dln": "sfnfns",
-      "dci": "sdnnsd",
-      "ds": "dfdf",
-      "co": "dsds",
-      "pr": "444444",
-      "crpr": "1249",
-      "uID": "1",
+      "dfn": "sdsdfds",
+      "dln": "asdasd",
+      "dci": "asdsadasdsadkj",
+      "ds": "asdasdasd",
+      "co": "sdfdsfdsf",
+      "pr": "454454",
+      "crpr": "80",
+      "uID": "5",
       "Products": [
         {
-          "id": "3",
-          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "price": 1249,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "quantity": 1,
-          "userID": "1"
+          "id": "12",
+          "thumbnail": "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+          "price": 40,
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "quantity": 2,
+          "userID": "5"
         }
       ],
       "id": 4
     },
     {
-      "dfn": "sssssss",
-      "dln": "sfnfns",
-      "dci": "sdnnsd",
-      "ds": "dfdf",
-      "co": "dsds",
-      "pr": "444444",
-      "crpr": "1249",
-      "uID": "1",
+      "dfn": "sdsdfds",
+      "dln": "asdasd",
+      "dci": "asdsadasdsadkj",
+      "ds": "asdasdasd",
+      "co": "sdfdsfdsf",
+      "pr": "454454",
+      "crpr": "1647",
+      "uID": "5",
       "Products": [
         {
-          "id": "3",
-          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "price": 1249,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "quantity": 1,
-          "userID": "1"
+          "id": "1",
+          "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+          "price": 549,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "quantity": 3,
+          "userID": "5"
         }
       ],
       "id": 5
-    },
-    {
-      "dfn": "sssssss",
-      "dln": "sfnfns",
-      "dci": "sdnnsd",
-      "ds": "dfdf",
-      "co": "dsds",
-      "pr": "444444",
-      "crpr": "1249",
-      "uID": "1",
-      "Products": [
-        {
-          "id": "3",
-          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "price": 1249,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "quantity": 1,
-          "userID": "1"
-        }
-      ],
-      "id": 6
-    },
-    {
-      "dfn": "sssssss",
-      "dln": "sfnfns",
-      "dci": "sdnnsd",
-      "ds": "dfdf",
-      "co": "dsds",
-      "pr": "444444",
-      "crpr": "1249",
-      "uID": "1",
-      "Products": [
-        {
-          "id": "3",
-          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "price": 1249,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "quantity": 1,
-          "userID": "1"
-        }
-      ],
-      "id": 7
     }
   ]
 }
